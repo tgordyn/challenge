@@ -8,13 +8,16 @@ import "./ingresar.scss";
 import Navbar from "../navbar/Navbar";
 
 export default ({
-  nombreChange,
-  apellidoChange,
-  vueloChange,
+//   nombreChange,
+//   apellidoChange,
+//   vueloChange,
+  handleChange,  
   handleSubmit,
   name,
   lastname,
   numeroVuelo,
+  errorName,
+  errorLastname,
 }) => {
   return (
     <div>
@@ -28,30 +31,42 @@ export default ({
         <Form.Group className="formGroupNombre">
           <Form.Label>Nombre</Form.Label>
           <Form.Control
-            name="nombre"
+            name="name"
             type="text"
             placeholder="Ingrese el nombre"
-            onChange={nombreChange}
+            //onChange={nombreChange}
+            onChange={handleChange}
             value={name}
           />
+
         </Form.Group>
+        {errorName ? 
+                (<p>
+                    EL nombre no puede contener números ni carácteres especiales
+                </p>):null}
         <Form.Group>
           <Form.Label>Apellido</Form.Label>
           <Form.Control
-            name="apellido"
+            name="lastname"
             type="text"
             placeholder="Ingrese el apellido"
-            onChange={apellidoChange}
+            //onChange={apellidoChange}
+            onChange={handleChange}
             value={lastname}
           />
         </Form.Group>
+        {errorLastname ? 
+                (<p>
+                    EL apellido no puede contener números ni carácteres especiales
+                </p>):null}
         <Form.Group>
           <Form.Label>Número de vuelo</Form.Label>
           <Form.Control
-            name="numero de vuelo"
+            name="numeroVuelo"
             type="text"
             placeholder="Ingrese el número de vuelo"
-            onChange={vueloChange}
+            //onChange={vueloChange}
+            onChange={handleChange}
             value={numeroVuelo}
           />
         </Form.Group>

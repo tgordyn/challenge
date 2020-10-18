@@ -39,4 +39,6 @@ const { Passenger, Package } = require('../models');
      
 });
 
+// Buscar todos los equipajes de un pasajero y eliminarlos
+
 module.exports = router;

@@ -9,13 +9,11 @@ Passengers.init({
     name:{
         type:S.STRING,
         allowNull:false,
-        unique:true,
         
     },
     lastname:{
         type:S.STRING,
         allowNull:false,
-        unique:true,
         
     },
     numeroVuelo:{
