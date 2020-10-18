@@ -12,7 +12,9 @@ import AddIcon from "@material-ui/icons/Add";
 import DeleteIcon from "@material-ui/icons/Delete";
 import CheckIcon from "@material-ui/icons/Check";
 import TextField from "@material-ui/core/TextField";
+import { Link } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
+
 
 import "../home/Home.scss";
 
@@ -63,7 +65,7 @@ export default ({ pasajero }) => {
               <StyledTableCell align="left">Número de vuelo</StyledTableCell>
               <StyledTableCell align="left">Bultos guardados</StyledTableCell>
               <StyledTableCell align="left">Total</StyledTableCell>
-              <StyledTableCell align="left">Entregar</StyledTableCell>
+              <StyledTableCell align="left">Acciones</StyledTableCell>
             </TableRow>
           </TableHead>
 
@@ -82,18 +84,27 @@ export default ({ pasajero }) => {
                   {pasajero.packages &&
                         pasajero.packages.map((bulto) => {
                             total+=1
+                            
                         return(
-                            bulto.category + " - "
-                            
+                            <div>
+                            {bulto.category} 
+                            </div>
                         )
-                            
-                    })}       
+                           
+                    })}
+                          
                   </StyledTableCell>
                   <StyledTableCell align="left">
                    {total}
                   </StyledTableCell>          
                   <StyledTableCell align="left">
-                   
+                        <Link to={"/passengers"} className="linkPasajeroId">
+                        Agregar bultos
+                        </Link>
+                         <br/>
+                        <Link to={"/passengers"} className="linkPasajeroId">
+                        Entregar bultos
+                        </Link>
                   </StyledTableCell>          
 
             </StyledTableRow>       

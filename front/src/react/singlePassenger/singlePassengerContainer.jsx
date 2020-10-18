@@ -22,7 +22,7 @@ render() {
       <PasajeroId
       pasajero={this.props.pasajero}
       />
-    //   <div>hola</div>
+    
     )
   }
 }

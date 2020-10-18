@@ -1,4 +1,5 @@
 import React from "react";
+import AddIcon from "@material-ui/icons/Add";
 import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -17,11 +18,18 @@ export default function navbar() {
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
-        <Navbar.Text className="navbarText">
-          <a style={{ color: "#363733", fontFamily: "Proxima Nova Regular" }}>
-            Tomás gordyn
-          </a>
-        </Navbar.Text>
+        <Navbar.Brand className="navbarBrand">
+          <Link
+            to="/addpassenger"
+            style={{ color: "#363733", fontFamily: "Proxima Nova Regular" }}
+          >
+            Agregar pasajero
+                  <AddIcon
+                    className="buttonAdd"
+                    fontSize="large"
+                  />
+          </Link>
+        </Navbar.Brand>
       </Navbar.Collapse>
     </Navbar>
   );

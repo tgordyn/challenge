@@ -68,7 +68,7 @@ export default ({ passenger }) => {
           <TableBody>
             {passenger &&
               passenger.map((pasajero) => (
-                <StyledTableRow key={passenger.id}>
+                <StyledTableRow key={pasajero.id}>
                   <StyledTableCell component="th" scope="row">
                     {pasajero.name}
                   </StyledTableCell>
