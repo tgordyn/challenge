@@ -17,33 +17,39 @@ class SinglePassengerContainer extends React.Component {
       }   
 
       this.handleChange = this.handleChange.bind(this)
+      this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleChange (event) {
         return this.setState({
           category: event.target.value,
-          boolean:!this.state.boolean
+          //boolean:!this.state.boolean
       });
       
     };
     
-componentDidUpdate(prevProps,prevState){
-  
-  if(prevState.boolean !== this.state.boolean){
-    this.props.fetchPassenger(this.props.id); 
+   handleSubmit (event){
+    event.preventDefault();
     const obj = {
       category: this.state.category,
       passengerId: this.props.id
     }
-    this.props.agregarEquipaje(obj);
+    this.props.agregarEquipaje(obj).then(()=>{
+      return this.setState({
+        boolean:!this.state.boolean
+      })
+    });
+   }
     
+componentDidUpdate(prevProps,prevState){
+  if(prevState.boolean !== this.state.boolean){
+    this.props.fetchPassenger(this.props.id);   
   }
 };
 
 componentDidMount() {
     //console.log("props", this.props)
-  this.props.fetchPassenger(this.props.id); 
-  
+  this.props.fetchPassenger(this.props.id);  
 }    
 
 
@@ -52,6 +58,7 @@ render() {
       <PasajeroId
       pasajero={this.props.pasajero}
       handleChange={this.handleChange}
+      handleSubmit={this.handleSubmit}
       />
     
     )

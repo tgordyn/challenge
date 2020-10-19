@@ -21,7 +21,7 @@ import Select from "@material-ui/core/Select";
 import { Link } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 
-import "../home/Home.scss";
+import "./single.scss";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -65,7 +65,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ({ pasajero, handleChange }) => {
+
+
+export default ({ pasajero, handleChange, handleSubmit }) => {
   console.log("pasajero es", pasajero.packages);
   const classes = useStyles();
   let total = 0;
@@ -107,21 +109,25 @@ export default ({ pasajero, handleChange }) => {
               <StyledTableCell align="left">{total}</StyledTableCell>
               <StyledTableCell align="left">
                 {total < 3 ? (
-                  <FormControl className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-label">
-                      Agregar equipaje
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      //   value={age}
-                      onChange={handleChange}
-                    >
-                      <MenuItem value={"prenda"}>Prenda</MenuItem>
-                      <MenuItem value={"pequeño"}>Pequeño</MenuItem>
-                      <MenuItem value={"grande"}>Grande</MenuItem>
-                    </Select>
-                  </FormControl>
+                  <form onSubmit={handleSubmit}>
+                    <FormControl className={classes.formControl}>
+                      <InputLabel id="demo-simple-select-label">
+                        Agregar equipaje
+                      </InputLabel>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        onChange={handleChange}
+                      >
+                        <MenuItem value={"prenda"}>Prenda</MenuItem>
+                        <MenuItem value={"pequeño"}>Pequeño</MenuItem>
+                        <MenuItem value={"grande"}>Grande</MenuItem>
+                      </Select>
+                      <button type="submit" value={"submit"} className="buttonSubmit">
+                        Agregar
+                      </button>
+                    </FormControl>
+                  </form>
                 ) : null}
 
                 <br />

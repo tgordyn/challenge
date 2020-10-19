@@ -25,7 +25,6 @@ handleClick (id) {
 };
 
 componentDidUpdate(prevProps,prevState){
-  
   if(prevState.boolean !== this.state.boolean){
     this.props.fetchAllPassengers();
   }
