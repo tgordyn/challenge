@@ -37,3 +37,9 @@ export const crearUsuario = (objeto) => {
     return axios.post("/api/passengers", objeto);
   };
 };
+
+export const eliminarUsuario = (id) => {
+  return (dispatch) => {
+    return axios.delete(`/api/passengers/${id}`);
+  };
+};

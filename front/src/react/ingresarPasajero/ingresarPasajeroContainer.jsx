@@ -16,53 +16,26 @@ class ingresarPasajeroContainer extends React.Component {
         errorLastname: false,
         errorVuelo: false,
       }
-      //this.nombreChange = this.nombreChange.bind(this)
-      //this.apellidoChange = this.apellidoChange.bind(this)
-      //this.vueloChange = this.vueloChange.bind(this)
+      
       this.handleSubmit = this.handleSubmit.bind(this)
       this.handleChange = this.handleChange.bind(this)   
     }
 
-    // nombreChange(evt) {
-    //   const value = evt.target.value;
-    //   this.setState({ name: value });
-    // }
-
-    // apellidoChange(evt) {
-    //   const value = evt.target.value;
-    //   this.setState({ lastname: value });
-    // }
-
-    // vueloChange(evt) {
-    //   const value = evt.target.value;
-    //   this.setState({ numeroVuelo: value });
-    // }
 
     handleChange (event) {
       const value = event.target.value
       switch (event.target.name) {
         
         case "name":
-          //const value = event.target.value
           return this.setState({ name: value, errorName:isValidName(value) });
         case "lastname":
-
           return this.setState({ lastname: value, errorLastname:isValidName(value) });
         case "numeroVuelo":
-          return this.setState({ numeroVuelo: event.target.value });
+          return this.setState({ numeroVuelo: value, errorVuelo:isValidVuelo(value) });
       }  
     }
 
-    // handleSubmit (event) {
-    //   event.preventDefault();
-    //     const obj = {
-    //     name: this.state.name, 
-    //     lastname: this.state.lastname, 
-    //     numeroVuelo: this.state.numeroVuelo
-    //     }
-    // this.props.crearUsuario(obj)
-    // }
-
+  
     handleSubmit (event) {
       event.preventDefault();
         const obj = {
@@ -74,17 +47,13 @@ class ingresarPasajeroContainer extends React.Component {
     }
 
 componentDidMount() {
-    //console.log("props", this.props)
-  //this.props.fetchPassenger(this.props.id); 
+ 
   
 }    
 
 render() {
     return (
       <IngresarPasajero
-      // nombreChange={this.nombreChange}
-      // apellidoChange={this.apellidoChange}
-      // vueloChange={this.vueloChange}
       handleChange={this.handleChange}
       handleSubmit={this.handleSubmit}
 
@@ -93,19 +62,20 @@ render() {
       numeroVuelo={this.state.numeroVuelo}
       errorName = {this.state.errorName}
       errorLastname = {this.state.errorLastname}
+      errorVuelo = {this.state.errorVuelo}
       />
     
     )
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  //console.log(state);
-  return {
+// const mapStateToProps = (state, ownProps) => {
+//   //console.log(state);
+//   return {
     
     
-  };
-};
+//   };
+// };
 const mapDispatchToProps = function (dispatch, ownProps) {
   return {
     crearUsuario: (objeto) => {
@@ -116,4 +86,4 @@ const mapDispatchToProps = function (dispatch, ownProps) {
   };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(ingresarPasajeroContainer);    
+export default connect(null,mapDispatchToProps)(ingresarPasajeroContainer);    

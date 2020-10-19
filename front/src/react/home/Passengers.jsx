@@ -47,7 +47,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default ({ passenger }) => {
+export default ({ passenger, handleClick }) => {
   const classes = useStyles();
   // console.log("pasajero", passenger);
   return (
@@ -62,6 +62,7 @@ export default ({ passenger }) => {
               <StyledTableCell align="left">Apellido</StyledTableCell>
               <StyledTableCell align="left">Número de vuelo</StyledTableCell>
               <StyledTableCell align="left">Bultos guardados</StyledTableCell>
+              <StyledTableCell align="left">Eliminar</StyledTableCell>
             </TableRow>
           </TableHead>
 
@@ -82,6 +83,14 @@ export default ({ passenger }) => {
                     <Link to={`/passengers/${pasajero.id}`} className="linkPasajeroId">
                       VER DETALLE
                     </Link>
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                  <DeleteIcon
+                    className="buttonEditar"
+                    onClick={() => handleClick(pasajero.id)}
+                    fontSize="large"
+                    style={{ color: "#e14d54" }}
+                  />
                   </StyledTableCell>
                 </StyledTableRow>
               ))}

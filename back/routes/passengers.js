@@ -38,5 +38,12 @@ router.post("/", (req, res, next) => {
     .catch(next);
   });  
 
+ // Borrar un pasajero
+ 
+ router.delete("/:id", (req, res, next) => {
+  Passenger.destroy({ where: { id: Number(req.params.id) } })
+    .then(() => res.sendStatus(200))
+    .catch(next);
+});
 
 module.exports = router;
