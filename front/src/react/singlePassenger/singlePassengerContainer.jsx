@@ -2,14 +2,43 @@ import React from "react";
 import PasajeroId from "./singlePassenger";
 
 import { fetchPassenger } from "../../redux/actions/passengers";
+import { agregarEquipaje } from "../../redux/actions/packages";
+
 
 import { connect } from "react-redux";
 
 class SinglePassengerContainer extends React.Component {
     constructor(props) {
       super(props);
-      
+      this.state = {
+        boolean: false,
+        category:"",
+       
+      }   
+
+      this.handleChange = this.handleChange.bind(this)
     }
+
+    handleChange (event) {
+        return this.setState({
+          category: event.target.value,
+          boolean:!this.state.boolean
+      });
+      
+    };
+    
+componentDidUpdate(prevProps,prevState){
+  
+  if(prevState.boolean !== this.state.boolean){
+    this.props.fetchPassenger(this.props.id); 
+    const obj = {
+      category: this.state.category,
+      passengerId: this.props.id
+    }
+    this.props.agregarEquipaje(obj);
+    
+  }
+};
 
 componentDidMount() {
     //console.log("props", this.props)
@@ -17,10 +46,12 @@ componentDidMount() {
   
 }    
 
+
 render() {
     return (
       <PasajeroId
       pasajero={this.props.pasajero}
+      handleChange={this.handleChange}
       />
     
     )
@@ -28,7 +59,7 @@ render() {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
+  
   return {
     id: ownProps.match.params.id,  
     pasajero: state.passengersReducers.one,
@@ -40,7 +71,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     
     fetchPassenger: id => dispatch(fetchPassenger(id)),
-    
+    agregarEquipaje: obj => dispatch(agregarEquipaje(obj))
   };
 };
 

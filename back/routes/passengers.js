@@ -6,7 +6,7 @@ const Op = Sequelize.Op;
 
 
 
-// Buscar un pasajero por ID, incluir su equipaje
+// Buscar un pasajero por ID
 router.get('/:passengerId', (req, res, next) => {
     Passenger.findOne({
       include: [{ model: Package }],  
@@ -39,7 +39,6 @@ router.post("/", (req, res, next) => {
   });  
 
  // Borrar un pasajero
- 
  router.delete("/:id", (req, res, next) => {
   Passenger.destroy({ where: { id: Number(req.params.id) } })
     .then(() => res.sendStatus(200))
