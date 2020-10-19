@@ -23,7 +23,6 @@ class SinglePassengerContainer extends React.Component {
   handleChange(event) {
     return this.setState({
       category: event.target.value,
-      //boolean:!this.state.boolean
     });
   }
 
@@ -57,7 +56,6 @@ class SinglePassengerContainer extends React.Component {
   }
 
   componentDidMount() {
-    //console.log("props", this.props)
     this.props.fetchPassenger(this.props.id);
   }
 

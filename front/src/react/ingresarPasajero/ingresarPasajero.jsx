@@ -1,9 +1,7 @@
 import React from "react";
-
 import { Button, Form } from "react-bootstrap";
 
 import "./ingresar.scss";
-
 import Navbar from "../navbar/Navbar";
 
 export default ({
@@ -18,7 +16,7 @@ export default ({
 }) => {
   return (
     <div>
-      <Navbar />
+      <Navbar/>
 
       <Form
         className="formGroup"

@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const { Passenger, Package } = require('../models/index');
-const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
-
-
 
 // Buscar un pasajero por ID
 router.get('/:passengerId', (req, res, next) => {

@@ -45,7 +45,7 @@ const useStyles = makeStyles({
 
 export default ({ passenger, handleClick }) => {
   const classes = useStyles();
-  // console.log("pasajero", passenger);
+ 
   return (
     <div>
       <Navbar />

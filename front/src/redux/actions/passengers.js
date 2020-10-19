@@ -31,7 +31,6 @@ export const fetchAllPassengers = () => {
   };
 };
 
-
 export const crearUsuario = (objeto) => {
   return (dispatch) => {
     return axios.post("/api/passengers", objeto);
