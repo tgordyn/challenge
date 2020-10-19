@@ -6,3 +6,10 @@ export const agregarEquipaje = (objeto) => {
       return axios.post("/api/packages", objeto);
     };
   };
+
+
+export const entregarEquipaje = (id) => {
+  return (dispatch) => {
+    return axios.delete(`/api/packages/${id}`);
+  }
+}  

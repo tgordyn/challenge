@@ -40,5 +40,15 @@ const { Passenger, Package } = require('../models');
 });
 
 // Buscar todos los equipajes de un pasajero y eliminarlos
+router.delete("/:id", (req, res, next)=>{
+  Package.destroy({
+    where:{
+      passengerId: Number(req.params.id)
+    }
+  })
+  .then(() => res.sendStatus(200))
+  .catch(next)
+})
+
 
 module.exports = router;

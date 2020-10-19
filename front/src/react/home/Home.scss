@@ -40,6 +40,18 @@
   }
 }
 
+.entregarBultos {
+  color:grey;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 20px;
+
+  &:hover {
+    color: #363733;
+    text-decoration: none;
+  }
+}
+
 #demo-simple-select-label {
   width: 15px;
   font-size: 20px

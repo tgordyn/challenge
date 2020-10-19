@@ -7,21 +7,15 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import EditIcon from "@material-ui/icons/Edit";
-import AddIcon from "@material-ui/icons/Add";
-import DeleteIcon from "@material-ui/icons/Delete";
-import CheckIcon from "@material-ui/icons/Check";
-import TextField from "@material-ui/core/TextField";
-
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
+
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { Link } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 
-import "./single.scss";
+import "../home/Home.scss";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -48,12 +42,6 @@ function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
 
-//   const useStyles = makeStyles({
-//     table: {
-//       minWidth: 500,
-//     },
-
-//   });
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -67,14 +55,14 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default ({ pasajero, handleChange, handleSubmit }) => {
+export default ({ pasajero, handleChange, handleSubmit, handleClick }) => {
   console.log("pasajero es", pasajero.packages);
   const classes = useStyles();
   let total = 0;
   return (
     <div>
       <Navbar />
-      <TableContainer component={Paper} className="tablaContainer">
+      <TableContainer component={Paper} className="tablaContainer" key={pasajero.id}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -87,18 +75,18 @@ export default ({ pasajero, handleChange, handleSubmit }) => {
             </TableRow>
           </TableHead>
 
-          <TableBody>
-            <StyledTableRow key={pasajero.id}>
+          <TableBody >
+            <StyledTableRow >
               <StyledTableCell component="th" scope="row">
                 {pasajero.name}
               </StyledTableCell>
-              <StyledTableCell align="left">
+              <StyledTableCell align="left" >
                 {pasajero.lastname}
               </StyledTableCell>
-              <StyledTableCell align="left">
+              <StyledTableCell align="left" >
                 {pasajero.numeroVuelo}
               </StyledTableCell>
-              <StyledTableCell align="left">
+              <StyledTableCell align="left" >
                 {pasajero.packages &&
                   pasajero.packages.map((bulto) => {
                     total += 1;
@@ -106,8 +94,8 @@ export default ({ pasajero, handleChange, handleSubmit }) => {
                     return <div>{bulto.category}</div>;
                   })}
               </StyledTableCell>
-              <StyledTableCell align="left">{total}</StyledTableCell>
-              <StyledTableCell align="left">
+              <StyledTableCell align="left" >{total}</StyledTableCell>
+              <StyledTableCell align="left" >
                 {total < 3 ? (
                   <form onSubmit={handleSubmit}>
                     <FormControl className={classes.formControl}>
@@ -130,10 +118,10 @@ export default ({ pasajero, handleChange, handleSubmit }) => {
                   </form>
                 ) : null}
 
-                <br />
-                <Link to={"/passengers"} className="linkPasajeroId">
+                <br/>
+                <p  className="entregarBultos" onClick={handleClick}>
                   {total > 0 ? "Entregar bultos" : null}
-                </Link>
+                </p>
               </StyledTableCell>
             </StyledTableRow>
           </TableBody>
